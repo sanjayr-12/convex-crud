@@ -1,9 +1,9 @@
-import Books from "./components/Books"
+import Home from "./components/Home"
 
 const App = () => {
   return (
     <div>
-      <Books/>
+      <Home/>
     </div>
   )
 }

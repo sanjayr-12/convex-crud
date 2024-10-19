@@ -27,3 +27,12 @@ export const deleteBooks = mutation({
     return "deleted";
   },
 });
+
+export const updateStatus = mutation({
+  args: { id: v.id("books"), isCompleted: v.boolean() },
+  handler: async (ctx, args) => {
+    const { id } = args;
+    await ctx.db.patch(id, { isCompleted: args.isCompleted });
+    return "updated"
+  },
+});

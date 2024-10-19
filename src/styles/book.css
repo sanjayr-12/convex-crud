@@ -1,0 +1,26 @@
+.book-container {
+  width: 300px;
+  padding: 20px;
+  margin-bottom: 50px;
+  text-align: center;
+  overflow-y: auto;
+  
+}
+
+.book-container button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.completed {
+  background-color: rgb(108, 192, 108);
+  border-radius: 20px;
+}
+
+.not-completed {
+  background-color: rgb(216, 99, 99);
+  border-radius: 20px;
+}
