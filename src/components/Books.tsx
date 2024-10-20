@@ -3,7 +3,7 @@ import { book } from "../types/book.type";
 import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { Id } from "../../convex/_generated/dataModel";
-import "../styles/book.css"
+import "../styles/book.css";
 
 export const Books = ({ books }: { books: book[] }) => {
   const [update, setUpdate] = useState(false);
@@ -31,18 +31,25 @@ export const Books = ({ books }: { books: book[] }) => {
     updateStatus({ id: id as Id<"books">, isCompleted })
       .then((mess) => console.log(mess))
       .catch((err) => console.log(err));
+    setUpdate(false);
   };
 
   return (
     <div>
-      {books.map((data: book, index:number) => {
+      {books.map((data: book, index: number) => {
         return (
-            <div key={data._id} className={`book-container ${data.isCompleted ? 'completed' : 'not-completed'}`}> 
-                <h3>Book no: {index+1 }</h3>
+          <div
+            key={data._id}
+            className={`book-container ${data.isCompleted ? "completed" : "not-completed"}`}
+          >
+            <h3>Book no: {index + 1}</h3>
             <p>Book title: {data.title}</p>
-            <p>Book Author{data.author}</p>
-            <p>Completed Status: {data.isCompleted ? "Completed" : "Not Completed"}</p>
-            <button onClick={() => handleClick(data._id)}>edit</button>
+            <p>Book Author: {data.author}</p>
+            <p>
+              Completed Status:{" "}
+              {data.isCompleted ? "Completed" : "Not Completed"}
+            </p>
+            <button onClick={() => handleClick(data._id)}>Update</button>
             {id === data._id && update && (
               <>
                 <form onSubmit={(e) => handleUpdate(e, data._id)}>
