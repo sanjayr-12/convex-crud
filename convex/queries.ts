@@ -33,6 +33,6 @@ export const updateStatus = mutation({
   handler: async (ctx, args) => {
     const { id } = args;
     await ctx.db.patch(id, { isCompleted: args.isCompleted });
-    return "updated"
+    return "updated";
   },
 });
