@@ -8,11 +8,13 @@ const Home = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const books = useQuery(api.queries.getBooks);
-  console.log(books);
   const createBooks = useMutation(api.queries.createBooks);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    if (!title.trim() || !author.trim()) {
+      return;
+    }
     createBooks({ title, author })
       .then(() => {
         console.log("created");
@@ -31,6 +33,7 @@ const Home = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="book title"
+          required
         />
         <br />
         <input
@@ -39,6 +42,7 @@ const Home = () => {
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
           placeholder="book author"
+          required
         />
         <br />
         <input type="submit" />
